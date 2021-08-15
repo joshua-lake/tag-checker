@@ -1,0 +1,58 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p webpack server",
+    "dev": "run-p client server",
+    "webpack": "webpack --config client/webpack.config.js",
+    "client": "npm run webpack -- --watch",
+    "server": "node server",
+    "test": "jest --watch --noStackTrace",
+    "lint": "eslint --ext .js,.jsx ."
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "superagent": "^6.1.0"
+  },
+  "eslintConfig": {
+    "extends": "eda",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-runtime"
+
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
