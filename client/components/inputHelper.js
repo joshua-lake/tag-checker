@@ -1,35 +1,32 @@
 export function tagChecker (string) {
   const seperate = string.split('')
-  const openingTags = []
+
   const incorrectClosingTags = []
-  seperate.forEach((item, index) => {
-    if (item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase() && seperate[index + 2] === '>') {
-      openingTags.push(seperate[index + 1])
-    }
+
+  const openingTags = seperate.filter((item, index) => {
+    return seperate[index - 1] === '<' && item !== '/' && item.match(/[A-Z]/) && seperate[index + 1] === '>'
   })
 
-  const pureOpeningTags = openingTags.filter(item => item.match(/[A-Z]/))
-
   seperate.forEach((item, index) => {
-    if (item === '<' && seperate[index + 1] === '/' && seperate[index + 2] === seperate[index + 2].toUpperCase() && seperate[index + 3] === '>') {
-      if (seperate[index + 2] === pureOpeningTags[pureOpeningTags.length - 1]) {
+    if (item === '<' && seperate[index + 1] === '/' && seperate[index + 2].match(/[A-Z]/) && seperate[index + 3] === '>') {
+      if (seperate[index + 2] === openingTags[openingTags.length - 1]) {
         if (incorrectClosingTags.length === 0) {
-          pureOpeningTags.pop()
+          openingTags.pop()
         }
       } else {
-        incorrectClosingTags.push(seperate[index + 2])
+        if (incorrectClosingTags.length === 0) {
+          incorrectClosingTags.push(seperate[index + 2])
+        }
       }
     }
   })
 
-  const pureIncorrectClosingTags = incorrectClosingTags.filter(item => item.match(/[A-Z]/))
+  openingTags.unshift('#')
+  incorrectClosingTags.unshift('#')
 
-  pureOpeningTags.unshift('#')
-  pureIncorrectClosingTags.unshift('#')
-
-  return pureOpeningTags.length === 1 && pureIncorrectClosingTags.length === 1
+  return openingTags.length === 1 && incorrectClosingTags.length === 1
     ? 'Correctly tagged paragraph'
-    : `Expected ${pureOpeningTags[pureOpeningTags.length - 1]} but found ${pureIncorrectClosingTags[pureIncorrectClosingTags.length - 1]}`
+    : `Expected ${openingTags[openingTags.length - 1]} but found ${incorrectClosingTags[incorrectClosingTags.length - 1]}`
 }
 
 export const options = [
