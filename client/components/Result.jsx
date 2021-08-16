@@ -4,7 +4,7 @@ function Result (props) {
   const { checkerResult } = props
 
   return (
-    <div>
+    <div className='result'>
       {checkerResult}
     </div>
   )
