@@ -10,7 +10,7 @@ const App = () => {
     <div className='body'>
       <div className='checker-style'>
         <div className='title'>Tag Checker</div>
-        <div className='width'>
+        <div className='component-width'>
           <Input setCheckerResult={setCheckerResult}/>
           <Result checkerResult={checkerResult} />
         </div>

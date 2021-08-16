@@ -41,23 +41,19 @@
   border-radius: 10px;
 }
 
-.width {
+.component-width {
   width: 80%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.selector {
-  width: 100%;
-}
-
 .button {
   width: 20%;
   height: 60%;
   border-radius: 10px;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  margin-top: 5%;
+  padding: 2%;
 }
 
 .form {
@@ -74,6 +70,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
+}
+
+.selector {
   width: 100%;
 }
 

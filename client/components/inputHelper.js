@@ -3,15 +3,15 @@ export function tagChecker (string) {
   const openingTags = []
   const incorrectClosingTags = []
   seperate.forEach((item, index) => {
-    if (item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase()) {
+    if (item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase() && seperate[index + 2] === '>') {
       openingTags.push(seperate[index + 1])
     }
   })
 
-  const pureOpeningTags = openingTags.filter(item => !item.match(/[^A-Z]/))
+  const pureOpeningTags = openingTags.filter(item => item.match(/[A-Z]/))
 
   seperate.forEach((item, index) => {
-    if (item === '<' && seperate[index + 1] === '/' && seperate[index + 2] === seperate[index + 2].toUpperCase()) {
+    if (item === '<' && seperate[index + 1] === '/' && seperate[index + 2] === seperate[index + 2].toUpperCase() && seperate[index + 3] === '>') {
       if (seperate[index + 2] === pureOpeningTags[pureOpeningTags.length - 1]) {
         if (incorrectClosingTags.length === 0) {
           pureOpeningTags.pop()
@@ -22,7 +22,7 @@ export function tagChecker (string) {
     }
   })
 
-  const pureIncorrectClosingTags = incorrectClosingTags.filter(item => !item.match(/[^A-Z]/))
+  const pureIncorrectClosingTags = incorrectClosingTags.filter(item => item.match(/[A-Z]/))
 
   pureOpeningTags.unshift('#')
   pureIncorrectClosingTags.unshift('#')
