@@ -3,7 +3,7 @@ export function tagChecker (string) {
   const openingTags = []
   const incorrectClosingTags = []
   seperate.forEach((item, index) => {
-  	item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase()
+    item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase()
       ? openingTags.push(seperate[index + 1])
       : null
   })
@@ -24,6 +24,8 @@ export function tagChecker (string) {
 
   pureOpeningTags.unshift('#')
   pureIncorrectClosingTags.unshift('#')
+
+  console.log(pureIncorrectClosingTags)
 
   return pureOpeningTags.length === 1 && pureIncorrectClosingTags.length === 1
     ? 'correctly tagged paragraph'
@@ -51,5 +53,9 @@ export const options = [
   {
     value: '<B><C>This should be centred and in boldface, but there is a missing closing tag</C>',
     label: '<B><C>This should be centred and in boldface, but there is a missing closing tag</C>'
+  },
+  {
+    value: 'Custom input',
+    label: 'Custom input'
   }
 ]

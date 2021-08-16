@@ -17,13 +17,21 @@ function Input (props) {
     setCheckerResult(tagChecker(input))
   }
 
+  function handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      setCheckerResult(tagChecker(e.target.value))
+    }
+  }
+
   // console.log('testState', testState)
 
   return (
     <div>
       <Select options={options} onChange={handleChange}/>
-      <button onClick={handleClick}>Check</button>
-
+      { input !== 'Custom input'
+        ? <button onClick={handleClick}>Check</button>
+        : <input onKeyPress={handleKeyPress}></input>
+      }
     </div>
 
   )
