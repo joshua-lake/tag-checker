@@ -23,11 +23,13 @@ function Input (props) {
   }
 
   return (
-    <div>
-      <Select options={options} onChange={handleChange}/>
+    <div className='form'>
+      <div className='selector'>
+        <Select options={options} onChange={handleChange}/>
+      </div>
       { input !== 'Custom input'
-        ? <button onClick={handleClick}>Check</button>
-        : <input onKeyPress={handleKeyPress}></input>
+        ? <button onClick={handleClick} className='button'>Check</button>
+        : <input onKeyPress={handleKeyPress} className='custom-input'></input>
       }
     </div>
 
