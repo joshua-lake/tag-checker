@@ -57,7 +57,7 @@ test('checks paragraph with lower case in tags passes', () => {
   expect(actual).toBe(expected)
 })
 
-test('checks paragraph with special character passes', () => {
+test('checks paragraph with special character opening tag passes', () => {
   const testString = '<A>testing<*></A>'
   const expected = 'Correctly tagged paragraph'
   const actual = tagChecker(testString)
