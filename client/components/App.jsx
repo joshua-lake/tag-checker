@@ -7,10 +7,14 @@ const App = () => {
   const [checkerResult, setCheckerResult] = useState('')
 
   return (
-    <div>
-      <div>Tag Checker</div>
-      <Input setCheckerResult={setCheckerResult} />
-      <Result checkerResult={checkerResult} />
+    <div className='body'>
+      <div className='checker-style'>
+        <div className='title'>Tag Checker</div>
+        <div className='width'>
+          <Input setCheckerResult={setCheckerResult}/>
+          <Result checkerResult={checkerResult} />
+        </div>
+      </div>
     </div>
   )
 }
