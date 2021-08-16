@@ -5,7 +5,6 @@ import { tagChecker, options } from './inputHelper'
 
 function Input (props) {
   const [input, setInput] = useState('')
-  // const [testState, setTestState] = useState('')
 
   const { setCheckerResult } = props
 
@@ -22,8 +21,6 @@ function Input (props) {
       setCheckerResult(tagChecker(e.target.value))
     }
   }
-
-  // console.log('testState', testState)
 
   return (
     <div>
