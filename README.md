@@ -12,6 +12,10 @@ Install dependancies with NPM
 
 ## Usage
 
+To run tests
+
+`npm test`
+
 To run tag-checker on localhost:3000
 
 `npm run dev`
