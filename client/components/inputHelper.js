@@ -3,33 +3,22 @@ export function tagChecker (string) {
   const openingTags = []
   const incorrectClosingTags = []
   seperate.forEach((item, index) => {
-    item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase()
-      ? openingTags.push(seperate[index + 1])
-      : null
+    if (item === '<' && seperate[index + 1] !== '/' && seperate[index + 1] === seperate[index + 1].toUpperCase()) {
+      openingTags.push(seperate[index + 1])
+    }
   })
 
   const pureOpeningTags = openingTags.filter(item => !item.match(/[^A-Z]/))
 
-  // seperate.forEach((item, index) => {
-  //   item === '<' && seperate[index + 1] === '/' && seperate[index + 2] === seperate[index + 2].toUpperCase()
-  // 	? seperate[index + 2] === pureOpeningTags[pureOpeningTags.length - 1]
-  //   	? incorrectClosingTags.length === 0
-  //     	? pureOpeningTags.pop()
-  //         : null
-  //       : incorrectClosingTags.push(seperate[index + 2])
-  //     : null
-  // })
-
   seperate.forEach((item, index) => {
     if (item === '<' && seperate[index + 1] === '/' && seperate[index + 2] === seperate[index + 2].toUpperCase()) {
       if (seperate[index + 2] === pureOpeningTags[pureOpeningTags.length - 1]) {
-         if (incorrectClosingTags.length === 0) {
+        if (incorrectClosingTags.length === 0) {
           pureOpeningTags.pop()
+        }
       } else {
         incorrectClosingTags.push(seperate[index + 2])
       }
-      }
-         
     }
   })
 
@@ -41,8 +30,8 @@ export function tagChecker (string) {
   console.log(pureIncorrectClosingTags)
 
   return pureOpeningTags.length === 1 && pureIncorrectClosingTags.length === 1
-    ? 'correctly tagged paragraph'
-    : `expected ${pureOpeningTags[pureOpeningTags.length - 1]} but recieved ${pureIncorrectClosingTags[pureIncorrectClosingTags.length - 1]}`
+    ? 'Correctly tagged paragraph'
+    : `Expected ${pureOpeningTags[pureOpeningTags.length - 1]} but found ${pureIncorrectClosingTags[pureIncorrectClosingTags.length - 1]}`
 }
 
 export const options = [

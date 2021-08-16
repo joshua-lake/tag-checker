@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import Input from './Input'
+import Result from './Result'
 
 const App = () => {
+  const [checkerResult, setCheckerResult] = useState('')
+
   return (
-    <div>Up and running !</div>
+    <div>
+      <div>Tag Checker</div>
+      <Input setCheckerResult={setCheckerResult} />
+      <Result checkerResult={checkerResult} />
+    </div>
   )
 }
 
