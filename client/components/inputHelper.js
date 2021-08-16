@@ -27,8 +27,6 @@ export function tagChecker (string) {
   pureOpeningTags.unshift('#')
   pureIncorrectClosingTags.unshift('#')
 
-  console.log(pureIncorrectClosingTags)
-
   return pureOpeningTags.length === 1 && pureIncorrectClosingTags.length === 1
     ? 'Correctly tagged paragraph'
     : `Expected ${pureOpeningTags[pureOpeningTags.length - 1]} but found ${pureIncorrectClosingTags[pureIncorrectClosingTags.length - 1]}`
