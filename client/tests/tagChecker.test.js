@@ -28,3 +28,24 @@ test('checks paragraph with unmatched tags returns as expected', () => {
   const actual = tagChecker(testString)
   expect(actual).toBe(expected)
 })
+
+test('checks partial closing tag returns as expected', () => {
+  const testString = '<A>testing</A'
+  const expected = 'Expected A but found #'
+  const actual = tagChecker(testString)
+  expect(actual).toBe(expected)
+})
+
+test('checks partial opening tag returns as expected', () => {
+  const testString = '<Atesting</A>'
+  const expected = 'Expected # but found A'
+  const actual = tagChecker(testString)
+  expect(actual).toBe(expected)
+})
+
+test('checks paragraph with partial opening and partial closing considered a string', () => {
+  const testString = '<Atesting</A'
+  const expected = 'Correctly tagged paragraph'
+  const actual = tagChecker(testString)
+  expect(actual).toBe(expected)
+})
